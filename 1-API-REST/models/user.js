@@ -7,8 +7,8 @@ class Usuarios {
         this.email = email;
         this.edad = edad;
     }
-    save(){
-        db.run(`INSERT INTO usuarios (nombre, edad, email) VALUES ("${this.nombre}", ${this.edad}, "${this.email}")`)
+    async save(){
+        await db.run(`INSERT INTO usuarios (nombre, edad, email) VALUES ("${this.nombre}", ${this.edad}, "${this.email}")`)
     }
     
     static mostrarUsuarios(){

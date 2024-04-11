@@ -1,3 +1,8 @@
+// TODO: Fill the database with some users
+// TODO: Run this script with node utilities/fill_database.js
+
+
+/* eslint-disable no-unused-vars */
 const USER = require('../models/user')
 
 const users = [
@@ -23,3 +28,4 @@ const users = [
     }
 
 ]
+/* eslint-enable no-unused-vars */

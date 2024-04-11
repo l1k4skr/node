@@ -10,6 +10,7 @@ server.use(cors())
 server.use(Express.json());
 
 // Routes
+//eslint-disable-next-line 
 server.get("/", (req, res)=>{
     req.send("Conectado al servidor.")
 })
@@ -21,14 +22,16 @@ server.get("/usuarios", (req, res)=>{
     });
 })
 
-
-server.post("/crear_usuario", (req, res)=>{
+let counter = 0;
+server.post("/crear_usuario", async (req, res)=>{
     console.log("Creando usuario")
+    counter++;
+    console.log(counter)
     // Cross Origin Resource Sharing
     res.header("Access-Control-Allow-Origin", "*");
-
+    console.log(req.body)
     const {name:nombre, edad:edad, email:email} = req.body;
-    User.crearUsuario(nombre, email, edad);
+     User.crearUsuario(nombre, email, edad);
     res.send(`Usuario ${nombre} creado exitosamente`)
     console.log("Nuevo usuario creado")
 })
