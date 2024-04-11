@@ -1,31 +1,42 @@
 const Express = require("express");
-const User = require("./models/user");
+const { Usuarios:User } = require("./models/user");
+const cors = require("cors");
 
 const server = new Express();
 const PORT = 3000;
 
-server.get("/", (res, req)=>{
-    req.send("Primer servidor hecho a mano")
-})
-server.get("/usuarios", (res, req)=>{
-    db.all("SELECT * FROM usuarios", (err, rows)=>{
-        if(err){
-            console.error(`Error al hacer la consulta: ${err.message}`)
-        }
-        req.json(rows)
-    })
+// Middleware
+server.use(cors())
+server.use(Express.json());
+
+// Routes
+server.get("/", (req, res)=>{
+    req.send("Conectado al servidor.")
 })
 
-server.post("/crear_usuario", (res, req)=>{
-    const {nombre, edad, email} = res.body;
-    User.crearUsuario(nombre, email, edad);
-    req.send(`Usuario ${nombre} creado exitosamente`)
+server.get("/usuarios", (req, res)=>{
+    User.mostrarUsuarios().then(usuarios=>{
+        res.send(usuarios)
     
+    });
 })
+
+
+server.post("/crear_usuario", (req, res)=>{
+    console.log("Creando usuario")
+    // Cross Origin Resource Sharing
+    res.header("Access-Control-Allow-Origin", "*");
+
+    const {name:nombre, edad:edad, email:email} = req.body;
+    User.crearUsuario(nombre, email, edad);
+    res.send(`Usuario ${nombre} creado exitosamente`)
+    console.log("Nuevo usuario creado")
+})
+
 server.post("/eliminar_usuario")
 server.post("/modificar_usuario")
 
-
+// Start server
 server.listen(PORT, ()=>{
     console.log(`Servidor corriendo en el puerto ${PORT}`)
 })
