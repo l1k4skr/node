@@ -8,17 +8,62 @@
 </head>
 <body>
     <form>
-        <label for="nombre">Nombre: </label>
-        <input type="text" id="name" name="name"/>
+        <!-- Identificador único del usuario -->
+        <label for="id">ID: </label>
+        <input type="text" id="id" name="id" required>
         <br>
+        <!-- Nombre de usuario -->
+        <label for="username">Nombre de usuario: </label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <!-- Email -->
         <label for="email">Email: </label>
-        <input type="email" name="email" id="email">
+        <input type="email" id="email" name="email" required>
         <br>
+        <!-- Contraseña -->
+        <label for="password">Contraseña: </label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <!-- Edad -->
         <label for="edad">Edad: </label>
-        <input type="number" name="edad" id="edad">
+        <input type="number" id="edad" name="edad" required>
         <br>
+        <!-- Fecha de nacimiento -->
+        <label for="fechaNacimiento">Fecha de nacimiento: </label>
+        <input type="date" id="fechaNacimiento" name="fechaNacimiento">
+        <br>
+        <!-- Género -->
+        <label for="genero">Género: </label>
+        <input type="text" id="genero" name="genero">
+        <br>
+        <!-- Teléfono -->
+        <label for="telefono">Teléfono: </label>
+        <input type="tel" id="telefono" name="telefono">
+        <br>
+        <!-- Dirección -->
+        <label for="direccion">Dirección: </label>
+        <input type="text" id="direccion" name="direccion">
+        <br>
+        <!-- Última fecha de inicio de sesión -->
+        <label for="ultimaFechaInicioSesion">Última fecha de inicio de sesión: </label>
+        <input type="datetime-local" id="ultimaFechaInicioSesion" name="ultimaFechaInicioSesion">
+        <br>
+        <!-- Estado de la cuenta -->
+        <label for="estadoCuenta">Estado de la cuenta: </label>
+        <input type="text" id="estadoCuenta" name="estadoCuenta">
+        <br>
+        <!-- Rol del usuario -->
+        <label for="rolUsuario">Rol del usuario: </label>
+        <input type="text" id="rolUsuario" name="rolUsuario">
+        <br>
+        <!-- Avatar -->
+        <label for="avatar">Avatar (URL): </label>
+        <input type="url" id="avatar" name="avatar">
+        <br>
+        <!-- Botón de envío -->
         <input type="submit">
     </form>
+    
     <script src="../js/create_user.js"></script>
 </body>
 </html>

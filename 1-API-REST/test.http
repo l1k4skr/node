@@ -1,3 +1,17 @@
-GET http://127.0.0.1:3000/
+POST http://127.0.0.1:3000/crear_usuario
+Content-Type: application/json
 
-
+{
+        "username": "usuario6",
+        "email": "usuario6@example.com",
+        "password": "contraseña6",
+        "edad": 33,
+        "fechaNacimiento": "1991-11-30",
+        "genero": "masculino",
+        "telefono": "+9988776655",
+        "direccion": "Calle Principal 123, Ciudad",
+        "ultimaFechaInicioSesion": "2024-04-07T10:10:00Z",
+        "estadoCuenta": "activo",
+        "rolUsuario": "usuario",
+        "avatar": "avatar6.jpg"
+    }
