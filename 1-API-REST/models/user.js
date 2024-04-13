@@ -84,7 +84,7 @@ class Usuarios {
     static crearUsuario(nombre, email, password, edad, fechaNacimiento, genero, telefono, direccion, ultimaFechaInicioSesion, estadoCuenta, rolUsuario, avatar) {
         const sql = `INSERT INTO usuarios (nombre, email, password, edad, fechaNacimiento, genero, telefono, direccion, ultimaFechaInicioSesion, estadoCuenta, rolUsuario, avatar) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
         const values = [nombre, email, password, edad, fechaNacimiento, genero, telefono, direccion, ultimaFechaInicioSesion, estadoCuenta, rolUsuario, avatar];
-    
+
         db.run(sql, values, (err) => {
             if (err) {
                 console.error(`Error al crear el usuario: ${err.message}`);
@@ -93,7 +93,50 @@ class Usuarios {
             }
         });
     }
-    
+
+    // Método para eliminar un usuario
+    static async eliminarUsuario(id) {
+        return new Promise((resolve, reject) => {
+            db.serialize(() => {
+                db.get(`SELECT * FROM usuarios WHERE id = ${id}`, (err, row) => {
+                    if (err) {
+                        console.error(`Error al buscar el usuario: ${err.message}`);
+                        reject(err);
+                    } else {
+                        db.run(`DELETE FROM usuarios WHERE id = ${id}`, (err) => {
+                            if (err) {
+                                console.error(`Error al eliminar el usuario: ${err.message}`);
+                                reject(err);
+                            } else {
+                                resolve(row); // Devolvemos el usuario eliminado
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    }
+    static async actualizarUsuario(id, nombre, email, edad, password) {
+        return new Promise((resolve, reject) => {
+            db.serialize(() => {
+                db.run(`UPDATE usuarios SET nombre = ?, email = ?, edad = ?, password = ? WHERE id = ?`, [nombre, email, edad, password, id], function (err) {
+                    if (err) {
+                        console.error(`Error al actualizar el usuario: ${err.message}`);
+                        reject(err);
+                    } else {
+                        db.get(`SELECT * FROM usuarios WHERE id = ${id}`, (err, row) => {
+                            if (err) {
+                                console.error(`Error al obtener el usuario actualizado: ${err.message}`);
+                                reject(err);
+                            } else {
+                                resolve(row); // Devolvemos el usuario actualizado
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    }
 }
 
 exports.Usuarios = Usuarios;

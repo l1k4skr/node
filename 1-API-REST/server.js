@@ -43,32 +43,37 @@ server.post("/crear_usuario", async (req, res) => {
     res.send(`Usuario ${name} creado exitosamente`)
     console.log("Nuevo usuario creado")
 })
-
+// TODO: Reparar!
 server.post("/eliminar_usuario", async (req, res) => {
     console.log("Eliminando usuario")
     console.log(req.body)
     
-    const { email } = req.body;
+    const { id } = req.body;
     
-    User.eliminarUsuario(email);
-    
-    res.send(`Usuario ${email} eliminado exitosamente`)
-    console.log("Usuario eliminado")
-})
+    try {
+        await User.eliminarUsuario(id); // Esperamos la eliminación del usuario
+        res.send(`ID de Usuario ${id} eliminado exitosamente`); // Enviamos la respuesta con el nombre del usuario eliminado
+        console.log(`ID de Usuario ${id} eliminado exitosamente`);
+    } catch (error) {
+        res.status(500).send("Error al eliminar el usuario");
+        console.error("Error al eliminar el usuario:", error);
+    }
+});
 
 server.post("/modificar_usuario", async (req, res) => {
-    console.log("Eliminando usuario")
     console.log(req.body)
 
-    const {id, name: nombre, edad: edad, email: email, password } = req.body;
+    const { id, name: nombre, edad, email, password } = req.body;
 
-    User.actualizarUsuario(id,  nombre, email, edad, password);
-    
-    res.send(`Usuario ${email} actualizado exitosamente`);
-    
-    console.log("Usuario actualizado");
-})
-
+    try {
+        const usuarioActualizado = await User.actualizarUsuario(id, nombre, email, edad, password);
+        res.send(`Usuario ${usuarioActualizado.email} actualizado exitosamente`);
+        console.log("Usuario actualizado:", usuarioActualizado);
+    } catch (error) {
+        res.status(500).send("Error al actualizar el usuario");
+        console.error("Error al actualizar el usuario:", error);
+    }
+});
 // Start server
 server.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`)

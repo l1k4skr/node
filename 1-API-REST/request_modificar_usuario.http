@@ -1,0 +1,10 @@
+POST http://127.0.0.1:3000/modificar_usuario
+Content-Type: application/json
+
+{
+    "id": 7,
+    "nombre": "Juan",
+    "edad": 25,
+    "email": "juan@hotmail.com",
+    "password": "123456"
+}
