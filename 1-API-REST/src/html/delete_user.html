@@ -6,9 +6,58 @@
     <title>Eliminar usuario</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='deleteuser.js'></script>
+    <link rel="stylesheet" href="../styles/formStyle.css">
+
+    <script src='delete_user.js'></script>
 </head>
 <body>
-    
+    <style>
+        h2 {
+            text-align: center;
+        }
+        #deleteUserForm {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        #deleteUserForm label {
+            margin-bottom: 10px;
+        }
+        #deleteUserForm input {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        #deleteUserForm button {
+            padding: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #response {
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #007bff;
+            display: none;
+        }
+        #input-id {
+            width: 100%;
+        }
+    </style>
+    <form id='deleteUserForm'>
+        <h2>Eliminar usuario</h2>
+        <label for='id'>ID:</label>
+        <input type='text' id='input-id' name='id' required>
+        <button type='submit'>Eliminar</button>
+    </form>
+    <div id='response'>
+        <!-- Respuesta del servidor -->
+
+    </div>
+    <!-- <a href='index.html'>Volver</a> -->
 </body>
 </html>

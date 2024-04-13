@@ -36,7 +36,14 @@ server.post("/crear_usuario", async (req, res)=>{
     console.log("Nuevo usuario creado")
 })
 
-server.post("/eliminar_usuario")
+server.post("/eliminar_usuario", async (req, res)=>{
+    console.log("Eliminando usuario")
+    console.log(req.body)
+    const {email} = req.body;
+    User.eliminarUsuario(email);
+    res.send(`Usuario ${email} eliminado exitosamente`)
+    console.log("Usuario eliminado")
+}
 server.post("/modificar_usuario")
 
 // Start server
