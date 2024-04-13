@@ -1,0 +1,25 @@
+{
+  "name": "1-api-rest",
+  "version": "1.0.0",
+  "description": "Desarrolla una API REST básica que permita a los usuarios realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre una colección de datos, como tareas o notas.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.19.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "nodemon": "^3.1.0",
+    "sqlite3": "^5.1.7"
+  }
+}

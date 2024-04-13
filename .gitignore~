@@ -1,3 +1,5 @@
 1-API-REST/.vscode
 1-API-REST/node_modules
 1-API-REST/package-lock.json
+1-API-REST/package.json
+1-API-REST/test.http
