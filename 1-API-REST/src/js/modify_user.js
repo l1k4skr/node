@@ -4,7 +4,7 @@ document.querySelector('form').addEventListener('submit', (event) => {
     const data = Object.fromEntries(formData);
 
     fetch('http://localhost:3000/modificar_usuario', {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
         },

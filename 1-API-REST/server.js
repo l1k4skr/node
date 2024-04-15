@@ -44,7 +44,7 @@ server.post("/crear_usuario", async (req, res) => {
     console.log("Nuevo usuario creado")
 })
 // TODO: Reparar!
-server.post("/eliminar_usuario", async (req, res) => {
+server.delete("/eliminar_usuario", async (req, res) => {
     console.log("Eliminando usuario")
     console.log(req.body)
     
@@ -60,7 +60,7 @@ server.post("/eliminar_usuario", async (req, res) => {
     }
 });
 
-server.post("/modificar_usuario", async (req, res) => {
+server.patch("/modificar_usuario", async (req, res) => {
     console.log(req.body)
 
     const { id, name: nombre, edad, email, password } = req.body;
